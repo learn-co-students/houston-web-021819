@@ -7,17 +7,23 @@
 
 ## Vocabulary
 
+* Class
+  * A type of object (`Hero`)
+* Instance Method
+  - Methods which are specific to a single instance of a class
+* Class Method
+  - Methods which are relevant to 
+  - Prefixed with `self.`
+* Instance
+  * A single example of a class (`steve_rogers`)
 * Attributes / Instance Variables
   * Prefixed with '@'
-  * Accessible anywhere inside that class
+  * Accessible inside of **instance methods** class
 * Properties
   * Instance Variable (attribute)
   * Getter (read access)
   * Setter (write access)
 
-
-
-* Class Method
-  * Prefixed with `self.`
 * Class variables / Static properties
   * Prefixed `@@`
+  * Accessible inside of **instance methods** and **class methods**
