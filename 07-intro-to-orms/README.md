@@ -38,9 +38,9 @@
 
 * ~~Create~~
 * ~~All~~
-* Update
-* Destroy
-* Updating our relationship methods (`hero#abilities`)
+* ~~Update~~
+* ~~Destroy~~
+* ~~Updating our relationship methods (`hero#abilities`)~~
 
 
 

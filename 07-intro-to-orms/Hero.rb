@@ -1,10 +1,11 @@
-class Hero 
+class Hero
 
-    attr_accessor :first_name, :last_name
+    attr_accessor :first_name, :last_name, :id
 
-    def initialize(first_name:, last_name:)
+    def initialize(first_name:, last_name:, id: nil)
         self.first_name = first_name
         self.last_name = last_name
+        self.id = id
     end
 
     def self.create(first_name:, last_name:)
@@ -23,23 +24,78 @@ class Hero
             "SELECT * FROM heroes"
         )
         result.map do | hero |
-            Hero.new(first_name: hero["first_name"], last_name: hero["last_name"])
+            Hero.new(first_name: hero["first_name"], last_name: hero["last_name"], id: hero["id"])
         end
+    end
+
+    def update( first_name:, last_name: )
+        self.first_name = first_name
+        self.last_name = last_name
+        DB[:conn].execute(
+            "UPDATE heroes SET first_name=?, last_name=? WHERE id=?",
+            [
+                first_name,
+                last_name,
+                self.id
+            ]
+        )
+    end
+
+    def destroy
+        DB[:conn].execute(
+            "DELETE FROM heroes WHERE id=?",
+            [
+                self.id
+            ]
+        )
+    end
+
+    def self.destroy_multiple(ids)
+        DB[:conn].execute(
+            "DELETE FROM heroes WHERE id IN (#{ids.join(', ')})"
+        )
+    end
+
+    def self.find(id)
+        hero = DB[:conn].execute(
+            "SELECT * FROM heroes WHERE id=?",
+            id
+        )[0]
+        Hero.new(first_name: hero["first_name"], last_name: hero["last_name"])
     end
 
     def full_name
         "#{self.first_name} #{self.last_name}"
     end
 
-    def hero_abilities
-        HeroAbility.all.select do | hero_ability |
-            hero_ability.hero == self
-        end
-    end
+    # def hero_abilities
+    #     HeroAbility.all.select do | hero_ability |
+    #         hero_ability.hero_id == self.id
+    #     end
+    # end
+
+    # def abilities
+    #     self.hero_abilities.map do | hero_ability |
+    #         Ability.find(hero_ability.ability_id)
+    #     end
+    # end
 
     def abilities
-        self.hero_abilities.map do | hero_ability |
-            hero_ability.ability
+        abilities = DB[:conn].execute(
+            "SELECT abilities.* 
+                FROM abilities
+                JOIN hero_abilities
+                    ON abilities.id = hero_abilities.ability_id
+                JOIN heroes
+                    ON heroes.id = hero_abilities.hero_id
+            WHERE 
+                heroes.id = ?",
+            [
+                self.id
+            ]
+        )
+        abilities.map do | ability |
+            Ability.new( name: ability['name'], coolness: ability['coolness'], id: ability['id'], )
         end
     end
 
