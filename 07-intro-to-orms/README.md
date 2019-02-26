@@ -11,3 +11,16 @@
 - `#destroy`
 - Query Optimization 
 
+## Outline
+
+
+
+## CRUD Overview
+
+| CRUD | Ruby Operation | SQL Operation |
+| ---- | -------------- | ------------- |
+|      |                |               |
+|      |                |               |
+|      |                |               |
+|      |                |               |
+

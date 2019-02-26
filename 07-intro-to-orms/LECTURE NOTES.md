@@ -21,6 +21,7 @@
   - We're going to connect our application to a database
   - Review of project and new Command Line Interface
   - Changes made in our CLI need to persist
+  - How we're going to get there
 - Review of CRUD
   - Method to create
   - Method to read
