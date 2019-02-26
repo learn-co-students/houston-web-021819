@@ -1,13 +1,30 @@
 class Hero 
 
-    @@all = []
-
     attr_accessor :first_name, :last_name
 
     def initialize(first_name:, last_name:)
         self.first_name = first_name
         self.last_name = last_name
-        @@all << self
+    end
+
+    def self.create(first_name:, last_name:)
+        DB[:conn].execute(
+            "INSERT INTO heroes (first_name, last_name) VALUES (?, ?)",
+            [
+                first_name,
+                last_name
+            ]
+        )
+        Hero.new(first_name: first_name, last_name: last_name)
+    end
+
+    def self.all
+        result = DB[:conn].execute(
+            "SELECT * FROM heroes"
+        )
+        result.map do | hero |
+            Hero.new(first_name: hero["first_name"], last_name: hero["last_name"])
+        end
     end
 
     def full_name
@@ -48,12 +65,9 @@ class Hero
         hero_with_most_abilities
     end
 
-    def self.all
-        @@all
-    end
-
     def to_s
         self.full_name
     end
 
 end
+

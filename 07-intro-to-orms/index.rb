@@ -1,15 +1,5 @@
 #!/usr/bin/env ruby
-
-require 'rubygems'
-require 'commander/import'
-require './Hero.rb'
-require './HeroAbility.rb'
-require './Ability.rb'
-require 'pry'
-
-program :name, 'heroes'
-program :version, '0.0.1'
-program :description, 'A Heroic CLI'
+require './config/environment.rb'
 command :start do |c|
     c.action do |args, options|
         def run 
@@ -26,7 +16,7 @@ command :start do |c|
             )
             case action
             when "Add a Hero"
-                Hero.new(
+                Hero.create(
                     first_name: ask("First Name:  "),
                     last_name: ask("Last Name: ")
                 )

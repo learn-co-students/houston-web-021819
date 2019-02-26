@@ -21,12 +21,14 @@
   - We're going to connect our application to a database
   - Review of project and new Command Line Interface
   - Changes made in our CLI need to persist
+  - Our goal is the goal: to persist our data while changing the code of our application / interface / business logic as little as possible without 
   - How we're going to get there
 - Review of CRUD
-  - Method to create
-  - Method to read
-  - Method to update
-  - Method to destroy
+  - Methods to create
+  - Methods to read
+  - Methods to update
+  - Methods to destroy
+- 
 - Review of Object Relationships
   - Our code works but would not work if we had alot of heroes
     - We need to optimize
