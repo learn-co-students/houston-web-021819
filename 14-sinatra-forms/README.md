@@ -1,39 +1,53 @@
-# Sinatra-Forms
-
-
-
-## SWBATs
-
-* Implement basic directory structure of MVC App in Sinatra
-* Explain what the acronym CRUD stands for
-* Define REST and how it works with HTTP
-* Implement RESTful Routing
-  - Index page
-  - Show page
-  - New page
-  - Edit page
-  - Create route
-  - Update route
-  - Delete route
-* Practice writing form templates in HTML with ERB
-* Describe how the HTTP verbs correspond to REST
-* Demonstrate how to build params hash from forms
+# Sinatra & Forms
 
 
 
 ## Outline
 
-* Last time on Sinatra Lectures
-* Reviewing RESTful routes
-  * Naming restful routes
-* Implementing remaining restful routes
-* Building an interface for remaining restful routes
-  * The "Fake" Routes 
-  * Form tag
-    * action
-    * method
-      * Doesnt understand patch, put, or delete
-  * Input
-    * name
-      * correlates to the key in the params hash, what the user types will be the value
-* Next time on Sinatra Lectures
+* ~~Finish building out Restful Routes~~
+* Add an interface for our remaining Restful Routes
+
+
+
+## Testing Tools
+
+* For Models: console
+* For Controllers: postman
+* For Views: browser
+
+
+
+## Domain
+
+* Users -< Friendship >- Users
+
+
+
+## Vocabulary
+
+* REST
+
+  | CRUD          | HTTP Method | Path                | Body                    |
+  | ------------- | ----------- | ------------------- | ----------------------- |
+  | Create        | POST        | /users              | Attributes for the user |
+  | Read          | GET         | /users & /users/:id | (None)                  |
+  | Update        | PATCH       | /users/:id          | Attributes for the user |
+  | Delete        | DELETE      | /users/:id          | (None)                  |
+  | *Create Form* | GET         | /users/new          | (None)                  |
+  | *Update Form* | GET         | /users/:id/edit     | (None)                  |
+
+* Form tag
+
+  * action: a path to send the form data to
+  * method: one of the http verbs
+
+* Input tag
+
+  * name: creates a key in the params hash
+
+* Update Forms
+
+  * Use hidden input name: "_method" to make it send a "PATCH" request
+
+
+
