@@ -23,7 +23,17 @@
 
 ## Outline
 
-
-
-## Code
-
+* Last time on Sinatra Lectures
+* Reviewing RESTful routes
+  * Naming restful routes
+* Implementing remaining restful routes
+* Building an interface for remaining restful routes
+  * The "Fake" Routes 
+  * Form tag
+    * action
+    * method
+      * Doesnt understand patch, put, or delete
+  * Input
+    * name
+      * correlates to the key in the params hash, what the user types will be the value
+* Next time on Sinatra Lectures
