@@ -1,122 +1,65 @@
-# sinatra-mvc-intro
+# Sinatra & MVC
 
+In Mod 1: 
 
+* We studied relationships between entities
 
-## SWBATs
+In Mod 2:
 
-* Explain the Model View Controller \(MVC\) pattern and give an example
-* Explain how web frameworks \(like Sinatra\) use the MVC pattern and why
-* Implement one model that inherit from ActiveRecord
-* Implement one controller to route and process requests
-  * Demonstrate how the params hash changes and where the data comes from
-* Implement ERB template and get it to render data from controller and model
-* Practice file structure in Sinatra
-* Identify the connection between REST and CRUD
-
-
+* How to structure your code in a maintainable way
 
 ## Outline
 
-* From Mod 1 to Mod 2 
+* ~~MVC Programming Paradigm~~
 
-  * Mod 2 will focus on structure
-  * What is Sinatra?
-  * What is its function both in practice and the curriculum?
+* ~~RESTful Routes Web Application Paradigm~~
 
-* What structures will we implement with Sinatra?
 
-  * MVC
+## Testing Tools
 
-    * Programming Paradaigms (like political parties)
-    * Define:
-      * Model
-      * View
-      * Controller
-    * Build: 
-      * View
-      * Controller & Methods
-        * `index`
-        * `show`
-    * We want our applications to manage data, not be static
+* For Models: console
+* For Controllers: postman
+* For Views: browser
 
-  * RESTful Routing
+## Domain
 
-    * Related to Crud
-
-    * Related to URLs and requests
-
-      * Review URL
-      * Review parts of an http request
-
-    * Define: 
-
-      * > REST/CRUD/Controller method table
-
-    * Build (test with Postman):
-
-      * Models
-      * Controller Methods:
-      * `create`
-      * `update`
-      * `destroy`
-
-* Afternoon labs
-
-  * May not use ActiveRecord. Thats okay, just pay attention
-
-## Code
-
-Model
-
-```
-class Model < ActiveRecord::Base
-end
-```
+* Users -< Friendship >- Users
 
 
 
-Controller
+## Vocabulary
 
-```
-class ApplicationController < Sinatra::Base
-  set :views, 'app/views'
+* Programming Paradigm 
+  * Model / Thought Process
+  * Political Parties
+* URL (uniform resource locator)
+  * Protocol (http)
+  * Domain (Directs you to a particular server (IP address))
+  * Path
 
-  get '/' do
-    @name = 'Michael'
+* MVC
 
-    erb :home
-  end
-  
-  get '/books' do
-    @books = Book.all
+  * Model
+    * A class (template for objects) which represents a table
+    * Where business logic goes
+  * View 
+    * What an end user sees
+  * Controller
+    * Where the path is driven
+    * Analogies:
+      * Model would be the kitchen, view would be the customers, and the controller would be the server
+      * Model would be the factory, view would be the end user, and the controller would be the distributor
+  * A popular paradigm for web applications
 
-    erb :'books/index'
-  end
+* REST
 
-  get '/books/:id' do
-    @book = Book.find(params[:id])
+  * Representation State Transfer
 
-    erb :'books/show'
-  end
-end
+  * Idea that the paths for our urls should correlate to the objects that a particular route is concerned with
 
-```
-
-
-
-View
-
-```
-<h1>Welcome!!</h1>
-
-<p>Amazing app!!!</p>
-
-<h3><%= @name %></h3>
-
-<% puts "blahb albh albha blahbla" %>
-```
-
-
-
-
-
+    | CRUD   | Path                | HTTP Method | Body                    |
+    | ------ | ------------------- | ----------- | ----------------------- |
+    | Create | /users              | POST        | Attributes for the user |
+    | Read   | /users & /users/:id | GET         | (None)                  |
+    | Update | /users/:id          | PATCH       | Attributes for the user |
+    | Delete | /users/:id          | DELETE      | (None)                  |
