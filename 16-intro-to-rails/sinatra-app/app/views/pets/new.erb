@@ -1,0 +1,16 @@
+<h1>Create Pet</h1>
+<form method="POST" action="/pets">
+    <div>
+        <label>Name</label>
+        <input type="text" name="pet[name]" />
+    </div>
+    <div>
+        <label>User</label>
+        <select name="pet[user_id]">
+            <% @users.each do | user | %>
+                <option value="<%= user.id%>"><%= user.name %></option>
+            <% end %>
+        </select>
+    </div>
+    <input type="submit" />
+</form>
