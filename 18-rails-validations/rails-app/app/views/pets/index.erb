@@ -1,0 +1,10 @@
+<h1>Pets</h1>
+<ul>
+<% @pets.each do | pet | %>
+    <li>
+        <%= link_to pet.name, pet %>
+   </li>
+<% end %>
+<!-- new_user_path: '/users/new' -->
+<%= link_to 'Create New Pet', new_pet_path  %>
+</ul>

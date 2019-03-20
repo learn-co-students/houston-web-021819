@@ -1,0 +1,31 @@
+<h2>Edit User</h2>
+<form method="POST" action="/users/<%= @user.id %>">
+    <input type="hidden" name="_method" value="PATCH" />
+    <div>
+        <label>Name</label>
+        <input type="text" name="user[name]" value="<%= @user.name %>"></input>
+    </div>
+    <div>
+        <label>Address</label>
+        <input type="text" name="user[address]" value="<%= @user.address %>"></input>
+    </div>
+    <div>
+        <label>Phone Number</label>
+        <input type="text" name="user[phone_number]" value="<%= @user.phone_number %>"></input>
+    </div>
+    <div>
+        <h3>Friends</h3>
+        <ul>
+            <% @users.each do | user | %>
+                <li>
+                    <input type="checkbox" name="user[following_ids][]" value="<%= user.id %>"/> <%= user.name %>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+    <input type="submit"/>
+</form>
+<form method="POST" action="/users/<%= @user.id %>">
+    <input type="hidden" name="_method" value="DELETE" />
+    <input type="submit" value="Delete"/>
+</form>
