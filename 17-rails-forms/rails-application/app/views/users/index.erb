@@ -1,0 +1,13 @@
+<h1>Users</h1>
+<ul>
+<% @users.each do | user | %>
+    <li>
+        <%= link_to "#{user.name} (#{user.absences})", user %>
+        <%= form_with(method: 'patch',  url: "/users/#{user.id}/add_absence" ) do | form | %>
+            <%= form.submit "Add absence" %>
+        <% end %>
+   </li>
+<% end %>
+<!-- new_user_path: '/users/new' -->
+<%= link_to 'Create New User', new_user_path  %>
+</ul>
