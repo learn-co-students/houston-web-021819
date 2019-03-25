@@ -1,0 +1,17 @@
+<h1>Users</h1>
+<!-- new_user_path: '/users/new' -->
+<%= link_to 'Create New User +', new_user_path , class: 'btn btn-primary' %>
+<ul class="list-group mt-3">
+<% @users.each do | user | %>
+    <li class="list-group-item">
+        <%= link_to "#{user.name}", user, class: 'mr-2' %> 
+        <%= link_to "/users/#{user.id}>/edit" do %>
+            <i class="fa fa-edit"></i>
+        <% end %>
+         <%= link_to "/users/#{user.id}>", method: 'delete' do %>
+            <i class="fa fa-trash"></i>
+        <% end %>
+        <span class="float-right">Absences: <%= link_to user.absences, "/users/#{user.id}/add_absence", method: 'patch', class: "badge badge-secondary" %></span>
+   </li>
+<% end %>
+</ul>
