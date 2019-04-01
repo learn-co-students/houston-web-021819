@@ -16,13 +16,13 @@
 
 
 
-![ship yard](https://i.imgur.com/rw1mRDl.jpg)
-
-
-
 ## Adding DOM Nodes to the Page
 
-* `document.createElement`
+![ship yard](https://i.imgur.com/rw1mRDl.jpg)
+
+##### Nodes unappended are like ships in a drydock 
+
+* document.createElement`
 
 * Set attributes
 
