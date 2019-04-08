@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <script src="form.js"></script>
+        <script src="character.js"></script>
+        <script src="index.js"></script>
+        <style>
+            body{
+                padding: 0px;
+                margin: 0px;
+            }
+            .preference-menu {
+                position: fixed; 
+                bottom: 0px; 
+                background-color: rgba(0, 0, 0, 0.6);
+                color: white;
+                z-index: 100;
+                margin: 0px;
+                padding: 20px;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <ul class="player-list">
+
+        </ul>
+        <div class="preference-menu">
+            <h1>Settings</h1>
+            <form class="preference-form">
+                Fast Mode <input class="speed-checkbox" name="speed" type="checkbox" />
+                <input type="submit" value="Apply"/>
+            </form>
+        </div>
+    </body>
+</html>
