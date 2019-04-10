@@ -12,6 +12,12 @@
 
 ActiveRecord::Schema.define(version: 2019_04_10_013816) do
 
+  create_table "npcs", force: :cascade do |t|
+    t.string "name"
+    t.string "x"
+    t.string "y"
+  end
+
   create_table "players", force: :cascade do |t|
     t.string "name"
     t.string "x"
@@ -24,10 +30,10 @@ ActiveRecord::Schema.define(version: 2019_04_10_013816) do
   create_table "steps", force: :cascade do |t|
     t.string "direction"
     t.integer "duration"
-    t.integer "player_id"
+    t.integer "npc_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["player_id"], name: "index_steps_on_player_id"
+    t.index ["npc_id"], name: "index_steps_on_npc_id"
   end
 
 end

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :npcs
   resources :players
 
   get 'characterData', to: 'characters#get_character_data'

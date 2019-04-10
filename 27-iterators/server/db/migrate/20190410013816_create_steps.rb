@@ -3,7 +3,7 @@ class CreateSteps < ActiveRecord::Migration[5.2]
     create_table :steps do |t|
       t.string :direction
       t.integer :duration
-      t.belongs_to :player
+      t.belongs_to :npc
       t.timestamps
     end
   end
