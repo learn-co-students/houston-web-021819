@@ -35,7 +35,7 @@ Npc.all.each do | npc |
 
     8.times do 
         direction = directions.sample
-        duration = rand(300..500)
+        duration = rand(300..1000)
 
         if direction == 'left'
             x -= duration
