@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default DragonCard = ({ name, description, image, id, atWar }) =>  (
+export default DragonCard = ({ name, description, image, id, atWar, shiftDragon }) =>  (
     <div>
         <h3>{name}</h3>
         <p>{description}</p>
